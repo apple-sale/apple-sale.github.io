@@ -12,7 +12,7 @@ Percent: <input type="text" value="20">
     document.querySelector('button').addEventListener('click', function (event) {
         var textarea = document.querySelector('textarea');
         var input = document.querySelector('input');
-        var t = decodeURIComponent(textarea.value);
+        var t = textarea.value;
         var p = parseInt(input);
         for (var i = 1; i <= 5000; i++) {
           var price = Math.ceil(i + ((i * p) / 100));
