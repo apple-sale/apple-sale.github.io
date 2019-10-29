@@ -15,8 +15,10 @@ Percent: <input type="text" value="20">
         var t = textarea.value;
         var p = parseInt(input);
         for (var i = 1; i <= 5000; i++) {
-          var price = Math.ceil(i + ((i * p) / 100));
-          var r = new RegExp('>' + i + ',00 USD', 'gi');
+          var old = i.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+          var price = (Math.ceil(i + ((i * p) / 100))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+          console.log(price);
+          var r = new RegExp('>' + old + ',00 USD', 'gi');
             t = t.replace(r, '>' + price + ',00 USD');
         }
         event.preventDefault();
