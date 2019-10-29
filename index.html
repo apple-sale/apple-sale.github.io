@@ -1,44 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
     <title>Apple Sale</title>
     <style>
-        .percent{background:
-#999;
-border-radius: 5px;
-padding: 10px 20px;
-font-size: 16px;
-color:
-#fff;
-border: 0;
-width: 50px;
-text-align: center;}
+        body {
+            font-family: 'Montserrat', sans-serif;
+            padding: 10px;
+            margin: 0;
+            background: #333;
+            color: #fff;
+        }
+        
+        .percent {
+            background: #999;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            border: 0;
+            width: 50px;
+            text-align: center;
+        }
     </style>
 </head>
-<body style="padding: 10px;margin: 0;background:#333;color:#fff;">
-    <div style="text-align:center">Percent: <input type="text" value="20" class="percent">% <button>SALE</button></div>
+
+<body>
+    <div style="text-align:center">Percent:
+        <input type="text" value="20" class="percent">%
+        <button>SALE</button>
+    </div>
     <textarea style="width:100%; height:400px; border:0; border-radius:10px; padding: 0; margin: 0;"></textarea>
-<script>
-    document.querySelector('button').addEventListener('click', function (event) {
-        var textarea = document.querySelector('textarea');
-        var input = document.querySelector('input');
-        var t = textarea.value;
-        var p = parseInt(input.value);
-        for (var i = 1; i <= 5000; i++) {
-          var old = i.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-            console.log(i + ((i * p) / 100), old, p);
-          var price = (Math.ceil(i + ((i * p) / 100))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-          console.log(price);
-          var r = new RegExp('>' + old + ',00 USD', 'gi');
-            t = t.replace(r, '>' + price + ',00 USD');
-        }
-        event.preventDefault();
-        textarea.value = t;
-        textarea.focus();
-        textarea.select();
-        document.execCommand('copy');
-    });
-</script>
+    <script>
+        document.querySelector('button').addEventListener('click', function(event) {
+            var textarea = document.querySelector('textarea');
+            var input = document.querySelector('input');
+            var t = textarea.value;
+            var p = parseInt(input.value);
+            for (var i = 1; i <= 5000; i++) {
+                var old = i.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+                console.log(i + ((i * p) / 100), old, p);
+                var price = (Math.ceil(i + ((i * p) / 100))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+                console.log(price);
+                var r = new RegExp('>' + old + ',00 USD', 'gi');
+                t = t.replace(r, '>' + price + ',00 USD');
+            }
+            event.preventDefault();
+            textarea.value = t;
+            textarea.focus();
+            textarea.select();
+            document.execCommand('copy');
+        });
+    </script>
 </body>
+
 </html>
